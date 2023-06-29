@@ -4,7 +4,7 @@ const pool = require("../db")
 const getPublisher = async (req, res) => {
   const client = await pool.connect();
   try {
-    const query = "SELECT * FROM publisher";
+    const query = "SELECT * FROM publisher ORDER BY publisher_name ASC";
     const result = await client.query(query);
 
     res.status(200).json(result.rows);

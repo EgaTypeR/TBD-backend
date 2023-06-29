@@ -13,7 +13,8 @@ const getBook = async (req, res) =>{
   languages.language_name
   FROM ((book
     INNER JOIN Publisher ON book.publisher_id = Publisher.publisher_id)
-    INNER JOIN Languages ON book.language_id = Languages.language_id);`, 
+    INNER JOIN Languages ON book.language_id = Languages.language_id) 
+  ORDER BY book_title ASC`, 
     (error, results)=>{
     if(error) throw error
     res.status(200).json(results.rows)

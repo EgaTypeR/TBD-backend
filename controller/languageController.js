@@ -4,7 +4,7 @@ const pool = require("../db")
 const getLanguage = async (req, res) => {
   const client = await pool.connect();
   try {
-    const result = await pool.query("SELECT * FROM languages");
+    const result = await pool.query("SELECT * FROM languages ORDER BY language_name ASC");
     const languages = result.rows;
     res.status(200).json(languages);
   } catch (error) {
